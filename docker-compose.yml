@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  node:
+    image: offchainlabs/nitro-node:v2.0.6-92bc70d
+    restart: unless-stopped
+    #env_file: .env
+    ports:
+      - "8547:8547" #RPC
+      - "8548:8548" #websocket
+      - "9642:9642" #sequencer feed
+    volumes:
+      - ./arbitrum:/home/user/.arbitrum
+    command: 
+      - --init.url="https://snapshot.arbitrum.io/mainnet/nitro.tar"
+      - --http.api=net,web3,eth
+      - --http.addr=0.0.0.0
+      - --l1.url=https://eth.senseinode.com
+      - --l2.chain-id=42161
+      - --http.vhosts=*
