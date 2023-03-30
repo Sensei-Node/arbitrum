@@ -12,7 +12,7 @@ services:
     volumes:
       - ./arbitrum:/home/user/.arbitrum
     command: 
-      - --init.url="https://snapshot.arbitrum.io/mainnet/nitro.tar"
+      - --init.url=https://snapshot.arbitrum.io/mainnet/nitro.tar
       - --http.api=net,web3,eth
       - --http.addr=0.0.0.0
       - --l1.url=https://eth.senseinode.com
