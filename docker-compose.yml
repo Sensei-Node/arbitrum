@@ -4,7 +4,7 @@ services:
   node:
     image: offchainlabs/nitro-node:v3.6.8-d6c96a5
     restart: unless-stopped
-    #env_file: .env
+    env_file: .env
     ports:
       - "127.0.0.1:8547:8547" #RPC
       - "127.0.0.1:8548:8548" #websocket
@@ -12,11 +12,11 @@ services:
     volumes:
       - ./arbitrum:/home/user/.arbitrum
     command: 
-      - --parent-chain.connection.url=https://ethereum-sepolia-rpc.publicnode.com
-      - --parent-chain.blob-client.beacon-url=https://eth-beacon-chain.drpc.org
-      - --chain.id=421614 
-      - --init.latest=pruned 
-      - --http.api=net,web3,eth
-      - --http.corsdomain=* 
-      - --http.addr=0.0.0.0 
-      - --http.vhosts=*
+      - --parent-chain.connection.url=${PARENT_CHAIN_CONNECTION_URL}
+      - --parent-chain.blob-client.beacon-url=${PARENT_CHAIN_BLOB_CLIENT_BEACON_URL}
+      - --chain.id=${CHAIN_ID}
+      - --init.latest=${INIT_LATEST}
+      - --http.api=${HTTP_API}
+      - --http.corsdomain=${HTTP_CORSDOMAIN}
+      - --http.addr=${HTTP_ADDR}
+      - --http.vhosts=${HTTP_VHOSTS}
