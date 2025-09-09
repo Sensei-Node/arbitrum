@@ -2,7 +2,7 @@ version: "3"
 
 services:
   node:
-    image: offchainlabs/nitro-node:v2.0.6-92bc70d
+    image: offchainlabs/nitro-node:v3.6.8-d6c96a5
     restart: unless-stopped
     #env_file: .env
     ports:
@@ -12,9 +12,11 @@ services:
     volumes:
       - ./arbitrum:/home/user/.arbitrum
     command: 
-      - --init.url=https://snapshot.arbitrum.io/mainnet/nitro.tar
+      - --parent-chain.connection.url=https://ethereum-sepolia-rpc.publicnode.com
+      - --parent-chain.blob-client.beacon-url=https://eth-beacon-chain.drpc.org
+      - --chain.id=421614 
+      - --init.latest=pruned 
       - --http.api=net,web3,eth
-      - --http.addr=0.0.0.0
-      - --l1.url=https://eth.senseinode.com
-      - --l2.chain-id=42161
+      - --http.corsdomain=* 
+      - --http.addr=0.0.0.0 
       - --http.vhosts=*
