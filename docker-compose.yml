@@ -6,9 +6,9 @@ services:
     restart: unless-stopped
     #env_file: .env
     ports:
-      - "8547:8547" #RPC
-      - "8548:8548" #websocket
-      - "9642:9642" #sequencer feed
+      - "127.0.0.1:8547:8547" #RPC
+      - "127.0.0.1:8548:8548" #websocket
+      - "127.0.0.1:9642:9642" #sequencer feed
     volumes:
       - ./arbitrum:/home/user/.arbitrum
     command: 
